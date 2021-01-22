@@ -18,25 +18,27 @@ echo "" > /etc/apt/sources.list.d/raspi.list
 
 cat >> /etc/apt/sources.list <<EOF
 # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
-deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster main contrib non-free
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster main contrib non-free
-deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-updates main contrib non-free
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-updates main contrib non-free
-deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-backports main contrib non-free
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-backports main contrib non-free
-deb https://mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main contrib non-free
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main contrib non-free
+deb https://mirrors.cqu.edu.cn/debian/ buster main contrib non-free
+# deb-src https://mirrors.cqu.edu.cn/debian/ buster main contrib non-free
+deb https://mirrors.cqu.edu.cn/debian/ buster-updates main contrib non-free
+# deb-src https://mirrors.cqu.edu.cn/debian/ buster-updates main contrib non-free
+deb https://mirrors.cqu.edu.cn/debian/ buster-backports main contrib non-free
+# deb-src https://mirrors.cqu.edu.cn/debian/ buster-backports main contrib non-free
+deb https://mirrors.cqu.edu.cn/debian-security buster/updates main contrib non-free
+# deb-src https://mirrors.cqu.edu.cn/debian-security buster/updates main contrib non-free
+EOF
+cat >> /etc/apt/sources.list.d/raspi.list <<EOF
+deb http://mirrors.cqu.edu.cn/raspberrypi/ buster main ui
 EOF
 
 wget https://mirrors.tuna.tsinghua.edu.cn/raspberry-pi-os/raspbian.public.key
 apt-key add raspbian.public.key
 
+
 sudo apt -y update
 sudo apt -y upgrade
 
-cat >> /etc/apt/sources.list.d/raspi.list <<EOF
-deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ buster main ui
-EOF
+
 
 wget https://mirrors.tuna.tsinghua.edu.cn/raspberrypi/raspberrypi.gpg.key
 apt-key add raspberrypi.gpg.key
