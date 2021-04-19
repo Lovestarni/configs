@@ -9,7 +9,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/sc-admin/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
 export TERM="xterm-256color"
 
 # Set name of the theme to load --- if set to "random", it will
@@ -76,7 +76,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z zsh-autosuggestions zsh-syntax-highlighting extract rand-quote gitignore zsh_reload sudo colored-man-pages safe-paste command-not-found per-directory-history history-substring-search)
+plugins=(git z extract rand-quote gitignore zsh_reload sudo colored-man-pages safe-paste command-not-found per-directory-history history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -110,14 +110,14 @@ bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('~/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "~/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "~/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="$PATH:/opt/anaconda3/bin":
+        export PATH="~/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -125,3 +125,17 @@ unset __conda_setup
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# zplug
+if [[ -f ~/.zplug/init.zsh ]] {
+  source ~/.zplug/init.zsh
+
+  zplug "zsh-users/zsh-syntax-highlighting"
+  zplug "zsh-users/zsh-autosuggestions"
+
+  if ! zplug check --verbose; then
+      echo 'Run "zplug install" to install'
+  fi
+  # Then, source plugins and add commands to $PATH
+  zplug load
+}
