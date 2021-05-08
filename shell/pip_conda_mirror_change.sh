@@ -25,18 +25,36 @@ echo "更换apt源..."
 echo "" > /etc/apt/sources.list
 echo "" > /etc/apt/sources.list.d/raspi.list
 
-cat >> /etc/apt/sources.list <<EOF
+# ubuntu 18
+# cat >> /etc/apt/sources.list <<EOF
 # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
-deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+# deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+# deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+# deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+# deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+# deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
 # deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
 # deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
 # deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
 # deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
 # deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+# deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+# deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+# EOF
+
+# ubuntu 20
+sudo cat >> /etc/apt/sources.list <<EOF
+deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+# deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+# deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+# deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+# deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
 EOF
 
 sudo apt -y update
