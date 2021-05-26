@@ -149,3 +149,6 @@ if [[ -f ~/.zplug/init.zsh ]] {
 # my alias
 # for tldr
 alias tldr="tldr -t ocean"
+
+# enable string match of *
+setopt no_nomatch
